@@ -14,14 +14,30 @@ public class ShipControllerScript : MonoBehaviour {
 		float moveVertical = -Input.GetAxis ("Vertical");
 		Transform sail = transform.FindChild("Sail");
 
-		transform.Rotate(new Vector3(0,0,moveHorizontal));
+//		transform.Rotate(new Vector3(0,0,moveHorizontal));
 
 
 		updateSailPosition(sail, moveVertical);
 		applyKeel();
 		applyDrag(sail);
+		applyRudderForce(moveHorizontal);
 //		applyAirfoil();
 //		applyFriction();
+	}
+
+	void applyRudderForce(float amount)
+	{
+		Vector2 keelPerp = new Vector2(1, 0);
+		Vector2 rudderPosition = new Vector2(0, -0.5f);
+		float shipAngle = Mathf.Deg2Rad*transform.rotation.eulerAngles.z;
+		Vector2 rudderDirection = new Vector2(
+			keelPerp.x * Mathf.Cos(shipAngle) - keelPerp.y * Mathf.Sin(shipAngle),
+			keelPerp.x * Mathf.Sin(shipAngle) + keelPerp.y * Mathf.Cos(shipAngle));
+		rudderPosition = new Vector2(
+			rudderPosition.x * Mathf.Cos(shipAngle) - rudderPosition.y * Mathf.Sin(shipAngle),
+			rudderPosition.x * Mathf.Sin(shipAngle) + rudderPosition.y * Mathf.Cos(shipAngle));
+		rigidbody2D.AddForceAtPosition((0.1f*amount)*rudderDirection, new Vector2(transform.position.x, transform.position.y)+rudderPosition);
+
 	}
 
 	void applyKeel()
@@ -29,7 +45,6 @@ public class ShipControllerScript : MonoBehaviour {
 		Vector2 keel = new Vector2(-1, 0);
 		Vector3 projection = Vector3.Project(new Vector3(rigidbody2D.velocity.x, rigidbody2D.velocity.y), new Vector3(keel.x, keel.y, 0));
 		Vector2 keelForce = -(rigidbody2D.velocity-new Vector2(projection.x, projection.y));
-		print (rigidbody2D.velocity + " " + keelForce);
 		rigidbody2D.AddForce(keelForce);
 	}
 
