@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class ShipControllerScript : MonoBehaviour {
-	
+
+	public GameObject windObject;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -45,21 +47,22 @@ public class ShipControllerScript : MonoBehaviour {
 		Vector2 keel = new Vector2(-1, 0);
 		Vector3 projection = Vector3.Project(new Vector3(rigidbody2D.velocity.x, rigidbody2D.velocity.y), new Vector3(keel.x, keel.y, 0));
 		Vector2 keelForce = -(rigidbody2D.velocity-new Vector2(projection.x, projection.y));
-		rigidbody2D.AddForce(keelForce);
+		rigidbody2D.AddForce(2*keelForce);
 	}
 
 	void applyFriction()
 	{
-		Vector2 keel = new Vector2(0, -1);
-		float shipAngle = Mathf.Deg2Rad*transform.rotation.eulerAngles.z;
-		Vector2 keelDirection = new Vector2(
-			keel.x * Mathf.Cos(shipAngle) - keel.y * Mathf.Sin(shipAngle),
-			keel.x * Mathf.Sin(shipAngle) + keel.y * Mathf.Cos(shipAngle));
+//		Vector2 keel = new Vector2(0, -1);
+//		float shipAngle = Mathf.Deg2Rad*transform.rotation.eulerAngles.z;
+//		Vector2 keelDirection = new Vector2(
+//			keel.x * Mathf.Cos(shipAngle) - keel.y * Mathf.Sin(shipAngle),
+//			keel.x * Mathf.Sin(shipAngle) + keel.y * Mathf.Cos(shipAngle));
 	}
 
 	void applyDrag(Transform sail)
 	{
-		Vector3 wind = WindScript.windDirection;
+		float windAngle = Mathf.Deg2Rad*windObject.transform.eulerAngles.z;
+		Vector2 wind = new Vector2(Mathf.Cos(windAngle), Mathf.Sin(windAngle));
 		Vector2 sailNormal = new Vector2(0,-1);
 		Vector2 keel = new Vector2(0, -1);
 		float sailAngle = Mathf.Deg2Rad*sail.rotation.eulerAngles.z;
