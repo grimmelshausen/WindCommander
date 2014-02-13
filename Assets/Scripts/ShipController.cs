@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShipControllerScript : MonoBehaviour {
+public class ShipController : MonoBehaviour {
 
 	public GameObject windObject;
 

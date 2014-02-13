@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ShipControllerScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CannonController.cs">
     <Files>
-      <File FileName="Assets/Scripts/ShipControllerScript.cs" Line="50" Column="26" />
+      <File FileName="Assets\Scripts\CannonController.cs" Line="33" Column="44" />
+      <File FileName="Assets\Scripts\ShipController.cs" Line="23" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
