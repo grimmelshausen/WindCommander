@@ -7,8 +7,8 @@ public class CannonController : MonoBehaviour {
 	// The cannonball prefab
 	public Rigidbody2D prefabCannonBall; 
 
-	[Range(0, 1000)]
-	public float velocity = 500.0f;
+	[Range(0, 10000)]
+	public float velocity = 5000.0f;
 
 
 	// Use this for initialization
@@ -24,16 +24,13 @@ public class CannonController : MonoBehaviour {
 			FireCannon();
         }
 	}
-
-
+    
 
     void FireCannon()
     {
+        // Spawn new ball and destroy after 1 sec
 		Rigidbody2D ballClone = (Rigidbody2D)Instantiate(prefabCannonBall, this.transform.position, this.transform.rotation);
 		ballClone.AddForce(this.transform.forward * velocity);
-		Destroy(ballClone);
-        
+		Destroy(ballClone, 1.0f);        
     }
-
-
 }

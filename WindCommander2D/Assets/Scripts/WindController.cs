@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WindScript : MonoBehaviour {
-
+public class WindController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
 	}
 }

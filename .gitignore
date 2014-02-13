@@ -1,0 +1,19 @@
+/WindCommander2D/Assets/Standard Assets
+/WindCommander2D/Assets/UnityVS
+
+/*.suo
+
+/WindCommander2D/Assets/UnityVS.meta
+
+/WindCommander2D/Library
+
+/WindCommander2D/*.csproj
+/WindCommander2D/*.unityproj
+
+/WindCommander2D/*.sln
+
+/WindCommander2D/*.DotSettings
+
+/WindCommander2D/*.suo
+
+/WindCommander2D/obj/Debug/*.cache
