@@ -5,7 +5,7 @@ using System.Collections;
 public class CannonController : MonoBehaviour {
 
 	// The cannonball prefab
-	public Rigidbody prefabCannonBall; 
+	public Rigidbody2D prefabCannonBall; 
 
 	[Range(0, 1000)]
 	public float velocity = 500.0f;
@@ -29,7 +29,7 @@ public class CannonController : MonoBehaviour {
 
     void FireCannon()
     {
-		Rigidbody ballClone = (Rigidbody)Instantiate(prefabCannonBall, this.transform.position, this.transform.rotation);
+		Rigidbody2D ballClone = (Rigidbody2D)Instantiate(prefabCannonBall, this.transform.position, this.transform.rotation);
 		ballClone.AddForce(this.transform.forward * velocity);
 		Destroy(ballClone);
         
