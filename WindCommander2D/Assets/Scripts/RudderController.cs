@@ -5,7 +5,9 @@ using System.Collections;
 public class RudderController : MonoBehaviour {
 
 
-    public float parameter = 1.2f;
+	public Transform rudderHinge;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +18,10 @@ public class RudderController : MonoBehaviour {
 	void Update () {
 
         float input = -Input.GetAxis("Horizontal");
+
+
+		// Rotate rudder sprite on hinge
+		rudderHinge.Rotate(0, 0, -input);
 
 
         // Calculate forces and apply to rigidbody

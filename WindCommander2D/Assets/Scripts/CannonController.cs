@@ -5,10 +5,10 @@ using System.Collections;
 public class CannonController : MonoBehaviour {
 
 	// The cannonball prefab
-	public Rigidbody2D prefabCannonBall; 
+	public GameObject prefabCannonBall; 
 
-	[Range(0, 10000)]
-	public float velocity = 5000.0f;
+	[Range(0, 500)]
+	public float velocity = 120.0f;
 
 
 	// Use this for initialization
@@ -24,13 +24,12 @@ public class CannonController : MonoBehaviour {
 			FireCannon();
         }
 	}
-    
-
     void FireCannon()
     {
+		GameObject ballClone; 
         // Spawn new ball and destroy after 1 sec
-		Rigidbody2D ballClone = (Rigidbody2D)Instantiate(prefabCannonBall, this.transform.position, this.transform.rotation);
-		ballClone.AddForce(this.transform.forward * velocity);
-		Destroy(ballClone, 1.0f);        
+		ballClone = (GameObject) Instantiate (prefabCannonBall, this.transform.position, this.transform.rotation);
+		ballClone.rigidbody2D.AddForce(this.transform.up * velocity);
+		GameObject.Destroy(ballClone, 2.0f);        
     }
 }
