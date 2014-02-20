@@ -8,7 +8,7 @@ public class WindController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        this.particleSystem.startSpeed = GetWind().magnitude;
 	}
 
 	public Vector3 GetWind()

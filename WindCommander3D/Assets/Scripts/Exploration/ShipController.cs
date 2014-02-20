@@ -107,7 +107,7 @@ public class ShipController : MonoBehaviour
 		//Add full force projected on forward of ship direction
 		//this.rigidbody.AddForce(Vector3.Project(windController.GetWindDirection(), this.transform.forward));
 		//Add a little bit of "drift" in true wind direction
-		this.rigidbody.AddForce(windController.GetWind());
+		//this.rigidbody.AddForce(windController.GetWind());
 		/*
 
 		//Add torgue to the ship depending on speed and rudder
@@ -142,6 +142,11 @@ public class ShipController : MonoBehaviour
 	}
 
 
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 200, 20), "Player ship speed " + this.rigidbody.velocity.magnitude);
+        GUI.Label(new Rect(10, 30, 200, 20), "Player ship speed direction " + Vector3.AngleBetween(Vector3.forward, this.rigidbody.velocity.normalized));
+    }
 
 	/// <summary>
 	/// Update the input values, calculate the speed and steering, and move the transform.

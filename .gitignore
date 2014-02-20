@@ -17,3 +17,20 @@
 /WindCommander2D/*.suo
 
 /WindCommander2D/obj/Debug/*.cache
+
+/WindCommander3D/Assets/UnityVS
+
+/WindCommander3D/Library
+
+/WindCommander3D/Temp
+
+/WindCommander3D/*.csproj
+
+/WindCommander3D/*.unityproj
+
+/WindCommander3D/*.sln
+
+/WindCommander3D/*.DotSettings
+
+/WindCommander3D/*.suo
+/WindCommander3D/obj/Debug
