@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RudderController.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Strategy\Config.cs">
     <Files>
-      <File FileName="Assets\Scripts\RudderController.cs" Line="28" Column="3" />
-      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Exploration\ShipBobble.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RudderController.cs" Line="44" Column="1" />
-      <File FileName="Assets\Scripts\KeelController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SailController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FrictionController.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\Scripts\RudderController.cs" Line="24" Column="31" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Exploration\ShipController.cs" Line="134" Column="3" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Exploration\ShipOrbit.cs" Line="39" Column="1" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Strategy\Town.cs" Line="128" Column="37" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Strategy\Config.cs" Line="38" Column="3" />
+      <File FileName="..\..\..\..\Desktop\JustATest\Assets\ShipGameStarterKit\Scripts\Strategy\TownResources.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
