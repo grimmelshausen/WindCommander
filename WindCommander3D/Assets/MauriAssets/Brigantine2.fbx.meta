@@ -1,0 +1,103 @@
+fileFormatVersion: 2
+guid: 33d8deab7cd895c4a8bf5916c414e388
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BrigantineGeo
+    100004: GEO_brigantine
+    100006: GEO_rudder
+    100008: JNT_BackSail
+    100010: JNT_backSailROT
+    100012: JNT_FrontUpSail
+    100014: JNT_midLowSail
+    100016: JNT_MidUpSail
+    100018: JNT_root
+    100020: JNT_rudder
+    100022: JNT_upLowSail
+    100024: JNT_upMidSail
+    100026: Sails1
+    100028: transform1
+    100030: Woodthing
+    400000: //RootNode
+    400002: BrigantineGeo
+    400004: GEO_brigantine
+    400006: GEO_rudder
+    400008: JNT_BackSail
+    400010: JNT_backSailROT
+    400012: JNT_FrontUpSail
+    400014: JNT_midLowSail
+    400016: JNT_MidUpSail
+    400018: JNT_root
+    400020: JNT_rudder
+    400022: JNT_upLowSail
+    400024: JNT_upMidSail
+    400026: Sails1
+    400028: transform1
+    400030: Woodthing
+    2300000: GEO_brigantine
+    2300002: GEO_rudder
+    2300004: Woodthing
+    3300000: GEO_brigantine
+    3300002: GEO_rudder
+    3300004: Woodthing
+    4300000: GEO_rudder
+    4300002: Woodthing
+    4300004: GEO_brigantine
+    4300006: Sails1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Sails1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
