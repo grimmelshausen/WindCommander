@@ -11,8 +11,6 @@ public class ShipMainSailForce : MonoBehaviour {
 	public float mainSailLiftStrength = 1f;
 	Rigidbody r;
 
-    public Vector3 w;
-
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +26,7 @@ public class ShipMainSailForce : MonoBehaviour {
 		 * the wind blows across the sail (aligned) (but only if the sail is *filled with wind*)
 		 */
 
-        this.w = wind.GetWind();
+        Vector3 w = wind.GetWind();
 
         // The wind relative to the ship's velocity
 		Vector3 relWind = wind.GetWind() - r.velocity;
