@@ -18,6 +18,10 @@ public class ShipOrbit : MonoBehaviour
 
 	void Update ()
 	{
+        if (Application.platform == RuntimePlatform.Android) //thisable this for android
+            return;
+
+
 		if (control != null)
 		{
 			float multiplier = Time.deltaTime * sensitivity;
