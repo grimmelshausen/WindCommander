@@ -79,7 +79,7 @@ public class GameCamera : MonoBehaviour
 
 	static public bool DetachFromParent (Transform t)
 	{
-		if (mInstance != null && Tools.IsChild(t, mInstance.mTrans))
+		if (mInstance != null && WCTools.IsChild(t, mInstance.mTrans))
 		{
 			mInstance.mTrans.parent = null;
 			return true;

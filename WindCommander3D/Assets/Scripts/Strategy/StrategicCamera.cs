@@ -160,7 +160,7 @@ public class StrategicCamera : GameCameraTarget
 				if (mDragging)
 				{
 					mAngleY += Input.GetAxis("Mouse X") * sensitivity.x * 4.5f;
-					mAngleY = Tools.WrapAngle(mAngleY);
+					mAngleY = WCTools.WrapAngle(mAngleY);
 				}
 			}
 			else if (Input.GetMouseButton(1))

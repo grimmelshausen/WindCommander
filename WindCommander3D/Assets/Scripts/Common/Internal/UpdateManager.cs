@@ -133,6 +133,6 @@ public class UpdateManager : MonoBehaviour
 
 	void OnApplicationQuit ()
 	{
-		Tools.Broadcast("End");
+		WCTools.Broadcast("End");
 	}
 }

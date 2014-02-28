@@ -51,7 +51,7 @@ public class ShipOrbit : MonoBehaviour
 				mOffset.y += mInput.y * multiplier;
 
 				// Limit the angles
-				mOffset.x = Tools.WrapAngle(mOffset.x);
+				mOffset.x = WCTools.WrapAngle(mOffset.x);
 				mOffset.y = Mathf.Clamp(mOffset.y, horizontalTiltRange.x, horizontalTiltRange.y);
 
 				// Automatically hide the cursor

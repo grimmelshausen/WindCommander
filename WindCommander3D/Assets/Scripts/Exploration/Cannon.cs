@@ -75,7 +75,7 @@ public class Cannon : MonoBehaviour
 		else
 		{
 			// No ship stats present -- see if there is a rigidbody that can be used as root
-			Rigidbody rb = Tools.GetRigidbody(mTrans);
+			Rigidbody rb = WCTools.GetRigidbody(mTrans);
 			mColliders = (rb != null) ? rb.GetComponentsInChildren<Collider>() : GetComponentsInChildren<Collider>();
 		}
 	}
