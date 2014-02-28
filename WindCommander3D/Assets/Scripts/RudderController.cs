@@ -11,6 +11,7 @@ public class RudderController : MonoBehaviour {
 	public float rudderMoveSpeed = 1;
 	float rudderPercent;
 
+    //public string debugText = "empty";
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +20,33 @@ public class RudderController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float input = -Input.GetAxis("Horizontal");
+        float input = 0;
+        if (Input.touchCount == 1)
+        {
+            Touch t = Input.GetTouch(0);
+           // debugText = "Phase " + t.phase.ToString() + ", DeltaPos " + t.deltaPosition + ", FingerId " + t.fingerId + ", Pos " + t.position + ", TapCount" + t.tapCount;
+            if (t.phase == TouchPhase.Moved)
+            {
+                input = -t.deltaPosition.x * 0.03f;
+            }
+        }
+        else
+        {
+             input = -Input.GetAxis("Horizontal");
+        }
+
 
 		rudderPercent += input * Time.deltaTime*rudderMoveSpeed; //calculate percentage of rudder 0 to 1 (0 is all left, 1 is all right)
 		rudderPercent = Mathf.Clamp01(rudderPercent); //make sure its not over 1 or below 0
 		float r = Mathf.SmoothStep(-maxRudderAngle, maxRudderAngle, rudderPercent);	//smoothly map 0 to 1 to -maxAngle to +maxAngle
 		this.transform.localRotation = Quaternion.Euler(0, r, 0); //set rotation to hinge	
+
+
+       
+
 	}
+      
+
+
 }
 
