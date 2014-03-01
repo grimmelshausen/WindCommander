@@ -24,10 +24,9 @@ public class SailBlow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 w = wind.GetWind();
 
         // The wind relative to the ship's velocity
-        Vector3 relWind = wind.GetWind() - ship.rigidbody.velocity;
+        Vector3 relWind = wind.Wind() - ship.rigidbody.velocity;
 
 
         Vector3 dir = Vector3.zero;

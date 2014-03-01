@@ -26,10 +26,8 @@ public class ShipMainSailForce : MonoBehaviour {
 		 * the wind blows across the sail (aligned) (but only if the sail is *filled with wind*)
 		 */
 
-        Vector3 w = wind.GetWind();
-
         // The wind relative to the ship's velocity
-		Vector3 relWind = wind.GetWind() - r.velocity;
+		Vector3 relWind = wind.Wind() - r.velocity;
 
 		//Drag force
 		//Project rel wind onto sail.right. The force is not applied at the hinge but at windMainSailForcePos, so you can move it around to make it look nice (higher up will make the ship tilt more)

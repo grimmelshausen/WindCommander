@@ -18,6 +18,6 @@ public class TutorialTargetPointController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        tutorialStateSelector.currentState = TutorialStateSelector.TutorialState.Outro;
+		tutorialStateSelector.NextState();
     }
 }

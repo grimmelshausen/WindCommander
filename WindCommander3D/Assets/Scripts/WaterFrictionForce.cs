@@ -21,7 +21,7 @@ public class WaterFrictionForce : MonoBehaviour {
 		
 		
 		//Drag
-		float velocityMagnitude = r.velocity.magnitude;
-		r.AddForce(-r.velocity.normalized*velocityMagnitude*velocityMagnitude*waterFriction);
+		float velocityMagnitude = r.velocity.sqrMagnitude;
+		r.AddForce(-r.velocity.normalized*velocityMagnitude*waterFriction);
 	}
 }

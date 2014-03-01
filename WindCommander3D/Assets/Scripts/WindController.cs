@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class WindController : MonoBehaviour {
-	
-	public Transform windDirectionAndStrengthIndicator;
+
+	[Range(0,10)]
+	public float windMagnitude = 1;
+
 
 	// Use this for initialization
 	void Start () {
-        this.particleSystem.startSpeed = GetWind().magnitude;
+        
 	}
 
-	public Vector3 GetWind()
+	void Update()
 	{
-		return windDirectionAndStrengthIndicator.position  - this.transform.position;
+		this.particleSystem.startSpeed = windMagnitude;
 	}
 
+	public Vector3 Wind()
+	{
+		return this.transform.forward * windMagnitude;
+	}
 }

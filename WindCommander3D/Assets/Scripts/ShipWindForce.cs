@@ -23,7 +23,7 @@ public class ShipWindForce : MonoBehaviour {
 		 * 
 		 */ 
 
-		this.rigidbody.AddForceAtPosition((windController.GetWind() - this.rigidbody.velocity)*windOnHullStrength, windShipForcePos.position);
+		this.rigidbody.AddForceAtPosition((windController.Wind() - this.rigidbody.velocity)*windOnHullStrength, windShipForcePos.position);
 
 	}
 }
