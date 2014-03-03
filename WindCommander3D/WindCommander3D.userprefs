@@ -1,15 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tutorial1Rudder.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Tutorial1Rudder.cs">
     <Files>
-      <File FileName="Assets\ButtonRestart.cs" Line="9" Column="3" />
-      <File FileName="Assets\Scripts\WindController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tutorial1Rudder.cs" Line="40" Column="22" />
-      <File FileName="Assets\Scripts\SailBlow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShipMainSailForce.cs" Line="29" Column="1" />
-      <File FileName="Assets\Scripts\ShipWindForce.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ButtonNextStage.cs" Line="11" Column="3" />
-      <File FileName="Assets\ButtonQuit.cs" Line="8" Column="22" />
+      <File FileName="Assets/Scripts/Tutorial1Rudder.cs" Line="67" Column="25" />
+      <File FileName="Assets/Scripts/TutorialStateSelector.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

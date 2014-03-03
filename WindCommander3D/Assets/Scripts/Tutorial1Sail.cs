@@ -6,7 +6,7 @@ using System.Collections;
  * the logic of the tutorial. Basically it uses the TutorialState to
  * determine what to do.
 /************************************************************************/
-public class Tutorial1Rudder : MonoBehaviour
+public class Tutorial1Sail: MonoBehaviour
 {
 		//tutorial state
 		public TutorialStateSelector tutorialStateSelector;
@@ -74,7 +74,9 @@ public class Tutorial1Rudder : MonoBehaviour
 					
 				case TutorialStateSelector.TutorialState.Stage1:
 					
-						shipWindForce.windOnHullStrength = 0.5f; //enable strong wind on hull force
+						shipWindForce.windOnHullStrength = 0.02f; //enable hull force
+						shipMainSailForce.mainSailDragStrength = 0.5f; // The ship should now move
+						sailController.mainSailMoveSpeed = 0.5f; //main sail can now move
 
 
 						tutorialIntroPanel.gameObject.SetActive (false);
@@ -87,7 +89,7 @@ public class Tutorial1Rudder : MonoBehaviour
 					
 				case TutorialStateSelector.TutorialState.Intermezzo1:
 						
-						shipWindForce.windOnHullStrength = 0; 
+						
 
 						tutorialIntroPanel.gameObject.SetActive (false);
 						tutorialIntermezzo1Panel.gameObject.SetActive (true);					
@@ -100,8 +102,11 @@ public class Tutorial1Rudder : MonoBehaviour
 						
 				case TutorialStateSelector.TutorialState.Stage2:
 						
-						shipWindForce.windOnHullStrength = 0.8f; //enable strong wind on hull force
-						wind.transform.rotation = Quaternion.Euler (new Vector3 (0, 180, 0));
+						shipMainSailForce.mainSailLiftStrength = 0.5f; //enable sail
+						shipMainSailForce.mainSailDragStrength = 0.2f;
+//						shipWindForce.windOnHullStrength = 0.0f; //enable hull force
+//						shipController.transform.position = new Vector3(40, 0, 100);
+//						shipController.transform.rotation = Quaternion.Euler (new Vector3 (0, 180, 0));
 
 						tutorialIntroPanel.gameObject.SetActive (false);
 						tutorialIntermezzo1Panel.gameObject.SetActive (false);					
