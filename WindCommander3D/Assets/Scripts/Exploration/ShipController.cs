@@ -6,8 +6,8 @@ public class ShipController : MonoBehaviour
 {
 
 
-	public Vector3 vel;
-	public float velMag;
+	//public Vector3 vel;
+	//public float velMag;
 
 	// Whether this ship is controlled by player input
 	public bool controlledByInput = false;
@@ -94,8 +94,8 @@ public class ShipController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		this.vel = this.rigidbody.velocity;
-		this.velMag = this.rigidbody.velocity.sqrMagnitude;
+		//this.vel = this.rigidbody.velocity;
+		//this.velMag = this.rigidbody.velocity.sqrMagnitude;
 
 		/*
 		//Add water friction
@@ -142,11 +142,11 @@ public class ShipController : MonoBehaviour
 	}
 
 
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 200, 20), "Player ship speed " + this.rigidbody.velocity.magnitude);
-        GUI.Label(new Rect(10, 30, 200, 20), "Player ship speed direction " + Vector3.AngleBetween(Vector3.forward, this.rigidbody.velocity.normalized));
-    }
+    //void OnGUI()
+    //{
+    //    GUI.Label(new Rect(10, 10, 200, 20), "Player ship speed " + this.rigidbody.velocity.magnitude);
+    //    GUI.Label(new Rect(10, 30, 200, 20), "Player ship speed direction " + Vector3.AngleBetween(Vector3.forward, this.rigidbody.velocity.normalized));
+    //}
 
 	/// <summary>
 	/// Update the input values, calculate the speed and steering, and move the transform.
