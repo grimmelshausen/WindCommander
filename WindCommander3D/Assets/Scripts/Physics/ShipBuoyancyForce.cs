@@ -4,6 +4,7 @@ using System.Collections;
 public class ShipBuoyancyForce : MonoBehaviour {
 
 	public float waterLiftStrength = 100;
+	public float damper = 1f;
 	public Transform buoyancyCenter;
 
 
@@ -18,6 +19,6 @@ public class ShipBuoyancyForce : MonoBehaviour {
 		float y = Mathf.Clamp(buoyancyCenter.position.y,-10, 0); //use only negative value of y position 
 		//dampen the y-movement because bouncy bouncy bouncy
 		this.rigidbody.AddForce(Vector3.up * y*y * waterLiftStrength); //make the force really strong
-		this.rigidbody.AddForce(Vector3.up * - this.rigidbody.velocity.y * 1f); //dampen the y movement
+		this.rigidbody.AddForce(Vector3.up * - this.rigidbody.velocity.y * damper); //dampen the y movement
 	}
 }
