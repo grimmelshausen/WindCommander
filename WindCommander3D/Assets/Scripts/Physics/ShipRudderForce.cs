@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ShipRudderForce : MonoBehaviour {
 
+
+
 	public float strength = 0.1f;
 	public WindController wind;
 	public Transform rudderHinge;

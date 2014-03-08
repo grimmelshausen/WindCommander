@@ -16,6 +16,8 @@ public class SailBlow : MonoBehaviour {
    
     public Vector3 zeroPos = new Vector3(0, 2.411292f, -0.7563128f);
 
+	public Vector3 blow;
+
 
 	// Use this for initialization
 	void Start () {
@@ -41,8 +43,9 @@ public class SailBlow : MonoBehaviour {
                     dir = this.transform.right; break;
                 }
         }
-        Vector3 blow = Vector3.Project(relWind, dir) * blowStrength;
+        blow = Vector3.Project(relWind, dir) * blowStrength;
         blow = Quaternion.AngleAxis(-this.transform.rotation.eulerAngles.y, Vector3.up) * blow; //this is a hack, it rotates the vector by something. I have no fucking clue why this is needed and I found it by trial&error :p shit happens
-        this.transform.localPosition = blow + zeroPos;        
+        this.transform.localPosition = blow + zeroPos;       
+
 	}
 }

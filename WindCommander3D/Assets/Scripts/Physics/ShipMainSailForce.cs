@@ -6,6 +6,7 @@ public class ShipMainSailForce : MonoBehaviour {
 	public WindController wind;
 	public Transform mainSailHinge;
 	public Transform windMainSailForcePos;
+	public SailBlow mainSailBlow;
 
 	public float mainSailDragStrength = 1f;
 	public float mainSailLiftStrength = 1f;
@@ -45,9 +46,10 @@ public class ShipMainSailForce : MonoBehaviour {
 
 		//Lift force
 		// Project rel wind onto sail.forward for strength, but then apply force perpendicular
-		//TODO: Add condition that for lift force, sail musst be *filled with wind*
-		//TODO: Find correct term for *filled with wind*
+
+
 		lift = Vector3.Project(relWind, this.mainSailHinge.forward).magnitude*this.mainSailHinge.right*this.mainSailLiftStrength;
+		lift = lift * mainSailBlow.blow.x; // multiply with the amount how much the sail is blown up
 		r.AddForceAtPosition(lift, p);
         //Debug.DrawLine(mainSailHinge.position, mainSailHinge.position + f, Color.red, 0, false);
 		liftMag = lift.magnitude;
