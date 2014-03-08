@@ -84,75 +84,6 @@ public class ShipController : MonoBehaviour
 		mCannons = GetComponentsInChildren<Cannon>();
 	}
 
-	
-	public float waterFrictionStrength = 0.1f;
-	public float rudderStrength = 0.001f;
-	public Transform rudderHinge;
-	public float waterLiftStrength = 100;
-	public float v;
-	public Transform buoyancyCenter;
-
-	void FixedUpdate()
-	{
-		//this.vel = this.rigidbody.velocity;
-		//this.velMag = this.rigidbody.velocity.sqrMagnitude;
-
-		/*
-		//Add water friction
-		Vector3	waterFriction = -(this.rigidbody.velocity*this.rigidbody.velocity.magnitude)*waterFrictionStrength;
-		this.rigidbody.AddForce(waterFriction);
-	*/
-	
-		//Add wind force
-		//Add full force projected on forward of ship direction
-		//this.rigidbody.AddForce(Vector3.Project(windController.GetWindDirection(), this.transform.forward));
-		//Add a little bit of "drift" in true wind direction
-		//this.rigidbody.AddForce(windController.GetWind());
-		/*
-
-		//Add torgue to the ship depending on speed and rudder
-		float rudderAngle = rudderHinge.localRotation.eulerAngles.y;
-		if (rudderAngle > 180)
-			rudderAngle = rudderAngle - 360;
-		this.rigidbody.AddTorque(-this.transform.up * rudderStrength * rudderAngle * this.rigidbody.velocity.magnitude);
-
-		//this.rigidbody.angularDrag = 5;
-*/
-
-		
-		//Add water lift force
-		float y = Mathf.Clamp(buoyancyCenter.position.y,-10, 0); //use only negative value of y position 
-		//dampen the y-movement because bouncy bouncy bouncy
-		this.rigidbody.AddForce(Vector3.up * y*y * waterLiftStrength); //make the force really strong
-		this.rigidbody.AddForce(Vector3.up * - this.rigidbody.velocity.y * 1f); //dampen the y movement
-	/*
-
-		//Add wind flattening force
-		//this.rigidbody.AddRelativeTorque(this.transform.forward * -Vector3.Project(this.windController.GetWindDirection(), this.transform.right).magnitude*0.1f);
-
-
-		//Add upward force
-	
-
-
-		//Sail force: Very simple
-		//First calculate the strengh of the wind on the sail (project 
-		*/
-
-	}
-
-
-    //void OnGUI()
-    //{
-    //    GUI.Label(new Rect(10, 10, 200, 20), "Player ship speed " + this.rigidbody.velocity.magnitude);
-    //    GUI.Label(new Rect(10, 30, 200, 20), "Player ship speed direction " + Vector3.AngleBetween(Vector3.forward, this.rigidbody.velocity.normalized));
-    //}
-
-	/// <summary>
-	/// Update the input values, calculate the speed and steering, and move the transform.
-	/// </summary>
-
-
 
 	void Update ()
 	{
@@ -174,32 +105,6 @@ public class ShipController : MonoBehaviour
 			}
 		}
 
-
-
-
-
-
-		/*
-		// Being in shallow water immediately cancels forward-driving input
-		if (shallowWater) mInput.y = 0f;
-		float delta = Time.deltaTime;
-
-		// Slowly decay the speed and steering values over time and make sharp turns slow down the ship.
-		mTargetSpeed = Mathf.Lerp(mTargetSpeed, 0f, delta * (0.5f + Mathf.Abs(mTargetSteering)));
-		mTargetSteering = Mathf.Lerp(mTargetSteering, 0f, delta * 3f);
-
-		// Calculate the input-modified speed
-		mTargetSpeed = shallowWater ? 0f : Mathf.Clamp01(mTargetSpeed + delta * mSensitivity.y * mInput.y);
-		mSpeed = Mathf.Lerp(mSpeed, mTargetSpeed, Mathf.Clamp01(delta * (shallowWater ? 8f : 5f)));
-
-		// Steering is affected by speed -- the slower the ship moves, the less maneuverable is the ship
-		mTargetSteering = Mathf.Clamp(mTargetSteering + delta * mSensitivity.x * mInput.x * (0.1f + 0.9f * mSpeed), -1f, 1f);
-		mSteering = Mathf.Lerp(mSteering, mTargetSteering, delta * 5f);
-
-		// Move the ship
-		mTrans.localRotation = mTrans.localRotation * Quaternion.Euler(0f, mSteering * delta * mStats.turningSpeed, 0f);
-		mTrans.localPosition = mTrans.localPosition + mTrans.localRotation * Vector3.forward * (mSpeed * delta * mStats.movementSpeed);
-		*/
 	}
 
 	/// <summary>
