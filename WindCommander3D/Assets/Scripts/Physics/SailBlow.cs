@@ -10,7 +10,7 @@ public class SailBlow : MonoBehaviour {
     };
 
     public WindController wind;
-    public float blowStrength = 0.1f;
+    public float blowStrength = 0.05f;
     public Transform ship;
     public SailType sailType = SailType.Forward;    
    
