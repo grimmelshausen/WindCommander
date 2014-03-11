@@ -8,10 +8,10 @@ public class SailRopeController : MonoBehaviour {
 
 
 	public float maxRopeLength = 80; // in degrees
-	public float currentRopeLength = 0;
+	public float targetRopeLength = 0;
 	public float ropeMoveSpeed = 0.1f;
 
-	public float currentRopeLengthPercent;
+	public float targetRopeLengthPercent;
 	public WindController wind;
 	public ShipController ship;
 
@@ -35,9 +35,9 @@ public class SailRopeController : MonoBehaviour {
 		 */
 
 		float input = Input.GetAxis("SailRope");
-		currentRopeLengthPercent += input * Time.deltaTime*ropeMoveSpeed;
-		currentRopeLengthPercent = Mathf.Clamp01(currentRopeLengthPercent); //make sure its not over 1 or below 0
-		currentRopeLength = currentRopeLengthPercent * maxRopeLength; // convert from 0 to 1 to 0 to 80
+		targetRopeLengthPercent += input * Time.deltaTime*ropeMoveSpeed;
+		targetRopeLengthPercent = Mathf.Clamp01(targetRopeLengthPercent); //make sure its not over 1 or below 0
+		targetRopeLength = targetRopeLengthPercent * maxRopeLength; // convert from 0 to 1 to 0 to 80
 
 		/*
 		 * Now we know how long the rope is (in degrees), =currentRopeLength. Now we 
@@ -52,14 +52,15 @@ public class SailRopeController : MonoBehaviour {
 
 		if (cross.y >= 0)
 		{
-			targetRot = Quaternion.Euler(0, currentRopeLength, 0);
+			targetRot = Quaternion.Euler(0, targetRopeLength, 0);
 		}
 		else
 		{
-			targetRot = Quaternion.Euler(0, -currentRopeLength, 0); 
+			targetRot = Quaternion.Euler(0, -targetRopeLength, 0); 
 		}
 		targetRotEuler = targetRot.eulerAngles;
-		this.transform.localRotation = Quaternion.Slerp(this.transform.localRotation, targetRot, Time.deltaTime*2); //now make nice interploation beween is and should be
+		this.transform.localRotation = targetRot; //Quaternion.Slerp(this.transform.localRotation, targetRot, Time.deltaTime*100); //now make nice interploation beween is and should be
+
 
 	}
 }
