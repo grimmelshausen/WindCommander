@@ -144,7 +144,7 @@ CGPROGRAM
 #endif
 	
 #if defined(WATER_REFLECTIVE)
-		color = refl * color;
+		color =  refl * color;
 #endif
 		return color;
 	}
