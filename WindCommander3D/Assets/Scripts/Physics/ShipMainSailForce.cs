@@ -18,6 +18,11 @@ public class ShipMainSailForce : MonoBehaviour {
 	public Vector3 lift;
 	public float liftMag; //for looking at it in the inspector
 
+
+	public Vector3 dragForward;
+	public Vector3 liftForward;
+
+
 	// Use this for initialization
 	void Start () {
 		this.r = this.rigidbody;
@@ -42,21 +47,20 @@ public class ShipMainSailForce : MonoBehaviour {
 			drag = Vector3.Project(relWind, this.mainSailHinge.right)*this.mainSailDragStrength;
 			Vector3 p = this.windMainSailForcePos.position;
 			r.AddForceAtPosition(drag, p);
-			Debug.DrawLine(mainSailHinge.position, mainSailHinge.position+(drag*3), Color.green, 0, false);        
 			dragMag  = drag.magnitude;
-
 
 
 			//Lift force
 			// Project rel wind onto sail.forward for strength, but then apply force perpendicular
-
-
 			lift = Vector3.Project(relWind, this.mainSailHinge.forward).magnitude*this.mainSailHinge.right*this.mainSailLiftStrength;
 			lift = lift * mainSailBlow.blow.x; // multiply with the amount how much the sail is blown up
-			r.AddForceAtPosition(lift, p);
-	        //Debug.DrawLine(mainSailHinge.position, mainSailHinge.position + f, Color.red, 0, false);
+			r.AddForceAtPosition(lift, p);	        
 			liftMag = lift.magnitude;
-			}
+
+			//For debugging project both forces in ship forward direction to see how much we get from it
+			dragForward = Vector3.Project(drag, this.transform.forward);
+			liftForward = Vector3.Project(lift, this.transform.forward);
+		}
 
 	}
 }
