@@ -6,11 +6,24 @@ clc
 
 
 %heading
-X = [45
+X = [
+0
+0
+0
+0
+0
+
+40
+40
+40
+40
+40
+
 45
 45
 45
 45
+%45
 
 
 90
@@ -37,13 +50,30 @@ X = [45
 180
 180
 180
-180]
+180
+
+75%fabios correction point
+]
 
 %segel winkel
-Y = [0
+Y = [
+    0
     20
     40
-    45
+    60
+    90
+    
+    0
+    20
+    40
+    60
+    90
+
+
+    0
+    20
+    40
+    %45
     90
     
     
@@ -61,7 +91,7 @@ Y = [0
   10
   20
   30
-  45
+  45    
   60
   90
   
@@ -71,15 +101,31 @@ Y = [0
   45
   60
   70
-  90]   
+  90
+  
+  65%fabios correction point
+  ]   
 
    
 
 %Z are ship speed in knots
-Z = [3.6
+Z = [
+    0
+    0
+    0
+    0
+    0
+    
+    0
+    0
+    0
+    0
+    0
+
+    3.6
     4.1
     4
-    0
+    %0
     0
     
     3.7
@@ -107,7 +153,10 @@ Z = [3.6
     2.9
     3.3
     3.6
-    3.9]
+    3.9
+    
+    0%fabios correction point
+    ]
    
 figure(1);
 hold on
@@ -148,3 +197,18 @@ surf(xi,yi,zi);
 title('Ship speed, CUBIC interp');
 xlabel('Heading [deg]'), ylabel('Sail Angle [deg]'), zlabel('Ship speed [kn]')
 axis([0, 180, 0, 90, 0, 10]);
+
+
+
+figure(5)
+[xi, yi] = meshgrid(0:1:180, 0:1:90);
+zi = griddata(X, Y ,Z, xi,yi, 'cubic');
+H = fspecial('gaussian',[11 11], 500);
+zismu = imfilter(zi, H, 'replicate');
+zismu = imfilter(zismu, H, 'replicate');
+zismu = imfilter(zismu, H, 'replicate');
+surf(xi,yi,zismu);
+title('Ship speed, SMOOTHED CUBIC interp');
+xlabel('Heading [deg]'), ylabel('Sail Angle [deg]'), zlabel('Ship speed [kn]')
+axis([0, 180, 0, 90, 0, 10]);
+
