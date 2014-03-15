@@ -212,3 +212,23 @@ title('Ship speed, SMOOTHED CUBIC interp');
 xlabel('Heading [deg]'), ylabel('Sail Angle [deg]'), zlabel('Ship speed [kn]')
 axis([0, 180, 0, 90, 0, 10]);
 
+
+
+disp('wait while writing file');
+%write out LUT in C# code
+fid = fopen('LUT.txt', 'w');
+fprintf(fid, '%s\r\n', 'float [,] L = new float[180,90];');
+for x=1:181 
+    for y=1:91
+        fprintf(fid, '%s\r\n', ['L[' num2str(x) ',' num2str(y) ']=' num2str(zismu(y,x)) 'f;']);
+    end
+end
+fclose(fid);
+disp('ok');
+
+
+
+            
+            
+
+
