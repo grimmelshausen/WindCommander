@@ -1,12 +1,6 @@
+function [DriveResult,HeelResult] = sailCalc(AWS, AWA, output)
 
-%			float P,Emeas,I,J,LP,BAS,Pfeet,Efeet,Ifeet,Jfeet,BASfeet,AWS,AWA,HEEL,AWSknots,mainArea,jibArea,spinArea,spinAreafeet,effUpwindArea,effDownwindArea;
-%			float genLuff,genLuffFactr,genLPfactr,rigAr,ArDFCcorr,ArHFCcorr,DFC20,DFC40,dePowrFctr,heightCE,RMC,liftCL,dragCD;
-%			float HFC20,DFCHeel,spinSetAWA,spinStatus,DFCnospi,DFCspi,corrDFC,corrHFC,leeWay,sailSideForce,sailDrive,heelMom,sailDrivelb,Heellb,heelMomlb,driveHMratio, estHeel;
-
-
-clc
-clear
-close all
+% from http://www.wb-sails.fi/Portals/209338/news/SailPowerCalc/SailPowerCalc.htm
 
 P = 10; %main luff
 Emeas = 2.6; %main foo
@@ -14,12 +8,12 @@ I= 7.2; %jib hoist
 J= 1.7; %jib base
 spinArea = 0; %spinnaker area
 
-LP = 110; %percent J
+LP = 150; %percent J
 
 BAS= 0.8; %boom height
-AWS= 9; %apparent wind speed
-AWA= 25; %apparent wind angle
-HEEL= 11 ;
+%AWS= 9; %apparent wind speed
+%AWA= 25; %apparent wind angle
+HEEL= 0 ;
 RMC= 78;
 
 %***Calculate sail areas
@@ -148,9 +142,13 @@ end
 %input.corrDFCResult.value=round(1000*corrDFC)/1000;
 
 if(AWA < spinSetAWA)
-    disp('No Spinnaker')
+    if (output)
+        disp('No Spinnaker')
+    end
 else
-    disp('Spinnaker UP')
+   if (output)
+       disp('Spinnaker UP')
+   end
 end
 
 
@@ -163,27 +161,35 @@ end
 %alunperin + 0.63 else + 0.594 _ vaikuttaa suoraan HFC:n arvoon
 
 %input.corrHFCResult.value=round(1000*corrHFC)/1000;
-disp(['corrHFCResult=' num2str(round(1000*corrHFC)/1000)])
+if (output)
+    disp(['corrHFCResult=' num2str(round(1000*corrHFC)/1000)])
+end
 
 liftCL= sin(pi/180*AWA)*corrDFC+cos(pi/180*AWA)*corrHFC;
 dragCD= sin(pi/180*AWA)*corrHFC-cos(pi/180*AWA)*corrDFC;
 
 %input.liftCLResult.value=round(1000*liftCL)/1000;
-disp(['liftCLResult=' num2str(round(1000*liftCL)/1000)]);
+if (output)
+    disp(['liftCLResult=' num2str(round(1000*liftCL)/1000)]);
+end
 %input.dragCDResult.value=round(1000*dragCD)/1000;
-disp(['dragCDResult=' num2str(round(1000*dragCD)/1000)]);
+if (output)
+    disp(['dragCDResult=' num2str(round(1000*dragCD)/1000)]);
+end
 
 
 sailSideForce= corrHFC*0.5*1.25*AWS*AWS*effUpwindArea/9.81*cos(pi/180*HEEL);
 
 if(AWA < 20)
-    leeWay= 20 - 0.8*AWA
+    leeWay= 20 - 0.8*AWA;
 else
     leeWay= 4.5 - 0.025*AWA;
 end
 
 %input.leeWayResult.value=round(10*leeWay)/10;
-disp(['leeWayResult=' num2str(round(1000*leeWay)/1000)]);
+if (output) 
+    disp(['leeWayResult=' num2str(round(1000*leeWay)/1000)]);
+end
 
 
 if(AWA < spinSetAWA)
@@ -194,12 +200,18 @@ end
 
 heelMom= 1.35*heightCE*sailSideForce;
 
-input.DriveResult.value= round(sailDrive);
-disp(['DriveResult=' num2str(round(1000*sailDrive)/1000)]);
-input.HeelResult.value= round(sailSideForce);
-disp(['HeelResult=' num2str(round(1000*sailSideForce)/1000)]);
-input.heelMomResult.value= round(heelMom);
-disp(['heelMomResult=' num2str(round(1000*heelMom)/1000)]);
+DriveResult = (sailDrive);
+if (output) 
+    disp(['DriveResult=' num2str(round(1000*sailDrive)/1000)]);
+end
+HeelResult = sailSideForce;
+if (output)
+    disp(['HeelResult=' num2str(round(1000*sailSideForce)/1000)]);
+end
+%input.heelMomResult.value= round(heelMom);
+if (output)
+    disp(['heelMomResult=' num2str(round(1000*heelMom)/1000)]);
+end
 
 
 %Convert to lbs
@@ -218,4 +230,6 @@ disp(['heelMomResult=' num2str(round(1000*heelMom)/1000)]);
 
 estHeel=round(heelMom/RMC/cos(pi/180*HEEL));
 %input.estHeelResult.value= estHeel;
-disp(['estHeelResult=' num2str(estHeel)]);
+if (output)
+    disp(['estHeelResult=' num2str(estHeel)]); 
+end
