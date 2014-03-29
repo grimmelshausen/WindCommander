@@ -1,0 +1,24 @@
+       }
+
+    public static SpeedLUT Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    public float Speed(int windAngle, int sailAngle)
+    {
+        if (windAngle >= 0 &&
+            windAngle <= 180 &&
+            sailAngle >= 0 &&
+            sailAngle <= 90)
+        {
+            return L[windAngle, sailAngle];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}

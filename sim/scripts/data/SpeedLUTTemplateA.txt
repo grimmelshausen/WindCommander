@@ -1,0 +1,7 @@
+public sealed class SpeedLUT
+{
+    private float[,] L;
+    private static readonly SpeedLUT instance = new SpeedLUT();
+    private SpeedLUT()
+    {
+        L = new float[181, 91];
