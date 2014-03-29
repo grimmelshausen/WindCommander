@@ -3,7 +3,7 @@ clc
 close all
 
  h = waitbar(0,'Please wait...');
-for iWA = 30:180
+for iWA = 1:180
     waitbar(iWA/360,h)
     for iSA = 1:1:90
 
@@ -39,16 +39,17 @@ for iWA = 30:180
 
         %Lift force
         %Project rel wind onto sail.forward for strength, but then apply force perpendicular
-        L = rotateVector2D(proj(wind, sailDir), 90) * (B)*2;
+        sailDir = rotateVector2D(sailDir, 40);
+        L = rotateVector2D(proj(wind, sailDir), 90) * (B)*5;
         sumL(iSA, iWA) = L(1);
         
         
         %in irons corrector
             if (sailAngle >= windAngle)
-                sumB(iSA, iWA) = -1;
-                sumD(iSA, iWA) = -1;
-                sumL(iSA, iWA) = -1;
-                sumH(iSA, iWA)= -1;
+                sumB(iSA, iWA) = 0;
+                sumD(iSA, iWA) = 0;
+                sumL(iSA, iWA) = 0;
+                sumH(iSA, iWA)= 0;
             end
         
      end
