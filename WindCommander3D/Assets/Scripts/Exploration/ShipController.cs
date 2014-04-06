@@ -83,7 +83,7 @@ public class ShipController : MonoBehaviour
 		mStats = GetComponent<GameShip>();
 		mCannons = GetComponentsInChildren<Cannon>();
 
-        Debug.Log(SpeedLUT.Instance.Speed(1, 1));
+        
 	}
 
 

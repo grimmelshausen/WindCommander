@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SimulationLogger.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SailRopeContollerTwo.cs">
     <Files>
-      <File FileName="Assets\ShipDebugInfoLabel.cs" Line="18" Column="35" />
-      <File FileName="Assets\Scripts\Physics\ShipMainSailForce.cs" Line="49" Column="3" />
-      <File FileName="Assets\SimulationLogger.cs" Line="44" Column="17" />
-      <File FileName="Assets\SailRopeController.cs" Line="62" Column="45" />
+      <File FileName="Assets\SailRopeContollerTwo.cs" Line="75" Column="32" />
+      <File FileName="Assets\Scripts\SailRopeController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Mathhelp.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Common\Other\ImprovedTrail.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
