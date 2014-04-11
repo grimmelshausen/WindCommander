@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /************************************************************************/
@@ -61,7 +61,7 @@ public class Tutorial1Sail: MonoBehaviour
 						shipMainSailForce.mainSailDragStrength = 0; //disable sail drag
 						shipMainSailForce.mainSailLiftStrength = 0; //disable sail lift
 						shipWindForce.windOnHullStrength = 0; //disable wind hull force
-						wind.windMagnitude = 4;
+						wind.rotateSpeed = 4;
 						wind.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
 
 						tutorialIntroPanel.gameObject.SetActive (true);

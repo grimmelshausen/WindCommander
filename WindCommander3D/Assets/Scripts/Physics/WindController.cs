@@ -4,8 +4,11 @@ using System.Collections.Generic;
 
 public class WindController : MonoBehaviour {
 
-	[Range(0,10)]
-	public float windMagnitude = 1;
+	[Range(-10,10)]
+	public float rotateSpeed = 1;
+
+
+	public float speed = 4;
 
 	// Use this for initialization
 	void Start () {
@@ -14,12 +17,20 @@ public class WindController : MonoBehaviour {
 
 	void Update()
 	{
-		this.particleSystem.startSpeed = windMagnitude;
+		this.particleSystem.startSpeed = speed;
+		this.transform.Rotate (0, rotateSpeed, 0);
+
+		if (Input.GetKeyDown (KeyCode.O))
+						this.transform.Rotate (0, 3, 0);
+
+		if (Input.GetKeyDown (KeyCode.P))
+						this.transform.Rotate (0, -3, 0);
+
 
 	}
 
 	public Vector3 Wind()
 	{
-		return this.transform.forward * windMagnitude;
+		return this.transform.forward * speed;
 	}
 }

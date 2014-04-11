@@ -16,7 +16,8 @@ public class SailRopeContollerTwo : MonoBehaviour {
 	public ShipController ship;
 
 	private float inIronsTolerance = 10;
-	public float rot;
+	public float inputRotSailDeg;
+	public float autoRotSailDeg;
 
 	public string msg;
 
@@ -40,7 +41,7 @@ public class SailRopeContollerTwo : MonoBehaviour {
 		
 		
 		/*
-		 * Calculate angle between wind and sail
+		 * Calculate angles between wind and sail and boat
 		 */
 		angleSailWind = Mathhelp.AngleY(this.transform.forward, relWind);//Mathhelp.MinAngleY(relWind, this.transform.forward);
 		angleShipWind = Mathhelp.AngleY(-ship.transform.forward, relWind);//Mathhelp.MinAngleY(relWind, this.transform.forward);
@@ -57,28 +58,62 @@ public class SailRopeContollerTwo : MonoBehaviour {
 		}
 
 
-		//Two cases: wind is right (starboard) or left (portbord) of boat
-		rot = 0;
-		if (angleShipWind > 0) // wind is right side
+		/**
+		 * Process the input: The approach is not so nice. Idea: get the user input, then see go through all cases 
+		 * where the sail is relative to boat and wind and then restrict the input (sail is then 
+		 * only in one or the other direction movable)
+		 * 
+		 */ 
+		inputRotSailDeg = 0;
+		if (angleShipWind > 0) // wind is right side starboard of boat
 		{
-
+			inputRotSailDeg = input;
 		}
-		else // wind from left side
+		else // wind from left side port side of boat
 		{
-			rot = -input;
-			if (angleSailWind >= 10)
+			inputRotSailDeg = -input;
+			/*
+			if (angleSailWind >= 10) //sail cannot rotate more than in irons
 			{
-				if (rot < 0)
-					rot = 0;
+				if (inputRotSailDeg < 0)
+					inputRotSailDeg = 0;
 			}
 
-			if (Mathf.Abs(angleSailShip) <= 5)
+			if (Mathf.Abs(angleSailShip) <= 5) //sail cannot rotate more than to the middle of the boat (fully shortened)
 			{
-				if (rot > 0)
-					rot = 0;
+				if (inputRotSailDeg > 0)
+					inputRotSailDeg = 0;
 			}
+
+			if (Mathf.Abs(angleSailShip) >= 90) //sail cannot rotate more than 90 deg away from ship (sheets eased fully off)
+			{
+				if (inputRotSailDeg > 0)
+					inputRotSailDeg = 0;
+			}*/
+
+
 		}
-		this.transform.Rotate(new Vector3(0, rot, 0));
+		this.transform.Rotate(new Vector3(0, inputRotSailDeg, 0)); //rotate the sail with the corrected user input
+
+
+		/*
+		 * Final step: Move sail automatically if wind blows from bad direction. This happens if 
+		 * the wind or the boat changes direction
+		 */
+
+		autoRotSailDeg = 0;
+		
+		if (angleShipWind > 0) { // wind is right side starboard of boat
+
+
+		} else // wind from left side port side of boat 
+		{
+			if(angleSailWind > 0)
+				autoRotSailDeg = 1;
+		}
+		this.transform.Rotate(new Vector3(0, autoRotSailDeg, 0)); //rotate the sail with the corrected user input
+
 
 	}
+	
 }

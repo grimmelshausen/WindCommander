@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ArrowWind : MonoBehaviour {
@@ -20,6 +20,9 @@ public class ArrowWind : MonoBehaviour {
 		this.transform.position = ship.transform.position + offset;
 		this.transform.rotation = wind.transform.rotation;
 		this.transform.Rotate(Vector3.up, 180); // Yup. Rotate 180 deg because the arrow looks backwards
-		this.transform.localScale = new Vector3(normalScale, normalScale, normalScale * wind.windMagnitude / 4);
+		this.transform.localScale = new Vector3(normalScale, normalScale, normalScale * wind.speed / 4);
+
+
+
 	}
 }
