@@ -7,7 +7,6 @@ public class ShipBuoyancyForce : MonoBehaviour {
 	public float damper = 1f;
 	public Transform buoyancyCenter;
 
-
 	// Use this for initialization
 	void Start () {
 	
@@ -15,10 +14,13 @@ public class ShipBuoyancyForce : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//Add water lift force
-		float y = Mathf.Clamp(buoyancyCenter.position.y,-10, 0); //use only negative value of y position 
-		//dampen the y-movement because bouncy bouncy bouncy
-		this.rigidbody.AddForce(Vector3.up * y*y * waterLiftStrength); //make the force really strong
-		this.rigidbody.AddForce(Vector3.up * - this.rigidbody.velocity.y * damper); //dampen the y movement
+
+		float y = buoyancyCenter.position.y;
+
+		if (y < 0)  //only inside water
+		{
+			this.rigidbody.AddForce(Vector3.up * -y * waterLiftStrength); //push upwards (the water lift is not quadratic)
+			this.rigidbody.AddForce(Vector3.up * - this.rigidbody.velocity.y * damper);//dampen the y-movement because bouncy bouncy bouncy
+		}
 	}
 }
