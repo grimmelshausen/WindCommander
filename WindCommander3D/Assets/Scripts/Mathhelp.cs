@@ -37,4 +37,10 @@ public class Mathhelp {
 		}
 	}
 
+
+	//project vector on plane (given the plane's normal n)
+	public static Vector3 ProjectOnPlane(Vector3 v1, Vector3 n)
+	{
+		return v1 - Vector3.Dot(v1, n) * n;
+	}
 }
