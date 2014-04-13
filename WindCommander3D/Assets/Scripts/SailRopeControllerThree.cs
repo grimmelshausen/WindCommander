@@ -45,6 +45,8 @@ public class SailRopeControllerThree : MonoBehaviour
 
         // The wind relative to the ship's velocity
         Vector3 relWind = wind.Wind() - ship.rigidbody.velocity;
+
+        Debug.DrawLine(ship.transform.position + new Vector3(0,  4.1f, 0), ship.transform.position + new Vector3(0, 4.1f, 0) + relWind, Color.red);
         
         
         /*
@@ -62,7 +64,7 @@ public class SailRopeControllerThree : MonoBehaviour
         {
             isInIrons = false;
         }
-        
+            
    
         /*
          * Blow the sail into the direction of the wind, with some tolerance

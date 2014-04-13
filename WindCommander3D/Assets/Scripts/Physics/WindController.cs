@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class WindController : MonoBehaviour {
 
 	[Range(-10,10)]
-	public float rotateSpeed = 1;
+	public float rotateSpeed = 0;
 
 
-	public float speed = 4;
+     public float speed = 10;
 
 	// Use this for initialization
 	void Start () {

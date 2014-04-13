@@ -4,7 +4,7 @@ using System.Collections;
 public class ShipKeelForce : MonoBehaviour {
 
 	public float straightenUpStrength = 1;
-	//public float sidewaysRetardationStrength = 1;
+	public float sidewaysRetardationStrength = 1;
 	//public Transform shipTop;
 	//public Transform shipBottom;
 
@@ -50,10 +50,16 @@ public class ShipKeelForce : MonoBehaviour {
 		 * Just slowly rotate the object into original rotation, keeping the y rotation
 		 * 
 		 */
-
+        // straight up
 		Quaternion r = Quaternion.Slerp(this.transform.rotation, Quaternion.identity, Time.deltaTime*straightenUpStrength);
-
 		this.transform.rotation = Quaternion.Euler(new Vector3(r.eulerAngles.x, this.transform.rotation.eulerAngles.y, r.eulerAngles.z));
+
+
+        //Retardation
+        this.rigidbody.AddForce(-Vector3.Project(this.rigidbody.velocity, this.transform.right)*sidewaysRetardationStrength);
+        //Debug.DrawLine(shipTop.position, shipTop.position - Vector3.Project(this.rigidbody.velocity, this.transform.right), Color.red);
+
+
 
 	}
 }

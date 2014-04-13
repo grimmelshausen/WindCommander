@@ -8,7 +8,7 @@ public class ArrowWind : MonoBehaviour {
 	public WindController wind;
 
 
-	float normalScale = 9;
+	float normalScale = 8;
 
 	// Use this for initialization
 	void Start () {
