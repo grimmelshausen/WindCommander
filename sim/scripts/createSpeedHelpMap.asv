@@ -1,0 +1,5 @@
+I = imread('lutHandPainted.png');
+
+for i=1:180
+    
+end
