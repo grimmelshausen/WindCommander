@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.IO;
 
 [RequireComponent(typeof(GameShip))]
 [AddComponentMenu("Exploration/Ship Controller")]
@@ -82,6 +83,27 @@ public class ShipController : MonoBehaviour
 		mTrans = transform;
 		mStats = GetComponent<GameShip>();
 		mCannons = GetComponentsInChildren<Cannon>();
+
+
+
+//        var sr = File.CreateText("out.txt");
+//        for (int windAngle = 1; windAngle <= 180; windAngle++)
+//        {
+//            float max = 0;
+//            int bestSailAngle = 0;
+//            for (int sailAngle = 1; sailAngle <= 90; sailAngle++)
+//            {
+//                float s = SpeedLUT.Instance.Speed(windAngle, sailAngle);
+//                if (s > max)
+//                {
+//                    max = s;
+//                    bestSailAngle = sailAngle;
+//                }
+//            }
+//            sr.WriteLine("WindAngle=" + windAngle + ": sailAngle=" + bestSailAngle + ", speed=" + max);
+//        }
+//        sr.Close();
+            
 
         
 	}
