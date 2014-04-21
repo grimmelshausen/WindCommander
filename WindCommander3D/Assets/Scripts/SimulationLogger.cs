@@ -4,7 +4,7 @@ using System.IO;
 
 public class SimulationLogger : MonoBehaviour {
 
-	public WindController wind;
+	private WindController wind;
 	public  Transform mainSailHinge;
 	public  ShipMainSailForce mainSailForce;
 	public Transform ship;

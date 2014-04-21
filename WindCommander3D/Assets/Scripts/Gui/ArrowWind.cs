@@ -5,14 +5,14 @@ public class ArrowWind : TogglableHelpGUI {
 
 	public Vector3 offset;
 	public Transform ship;
-	public WindController wind;
+	private WindController wind;
 
 
 	float normalScale = 20;
 
 	// Use this for initialization
 	void Start () {
-
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame

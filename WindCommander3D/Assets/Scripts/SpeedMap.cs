@@ -5,12 +5,12 @@ public class SpeedMap : TogglableHelpGUI {
 
     public Vector3 offset;
     public Transform ship;
-    public WindController wind;
+    private WindController wind;
 
 
 	// Use this for initialization
 	void Start () {
-	
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame
