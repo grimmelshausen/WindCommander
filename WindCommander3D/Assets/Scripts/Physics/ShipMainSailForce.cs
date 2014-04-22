@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipMainSailForce : MonoBehaviour {
 	
-	public WindController wind;
+	private WindController wind;
 	public Transform mainSailHinge;
 	public Transform windMainSailForcePos;
 	public SailBlow mainSailBlow;
@@ -26,6 +26,7 @@ public class ShipMainSailForce : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.r = this.rigidbody;
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame

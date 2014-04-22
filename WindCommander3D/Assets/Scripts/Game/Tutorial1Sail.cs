@@ -15,7 +15,7 @@ public class Tutorial1Sail: MonoBehaviour
 		public ShipController shipController;
 		public ShipRudderForce shipRudderForce;
 		public ShipWindForce shipWindForce;
-		public WindController wind;
+		private WindController wind;
 		public ShipMainSailForce shipMainSailForce;
 		public SailController sailController;
 
@@ -35,6 +35,7 @@ public class Tutorial1Sail: MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
+                //this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 				tutorialStateSelector.currentState = TutorialStateSelector.TutorialState.Intro;
 				sailControllerSpeedSave = sailController.mainSailMoveSpeed;
 				Time.timeScale = 1;

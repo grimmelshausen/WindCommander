@@ -17,7 +17,7 @@ public class WindController : MonoBehaviour {
 
 	void Update()
 	{
-		this.particleSystem.startSpeed = speed;
+		
 		this.transform.Rotate (0, rotateSpeed, 0);
 
 		if (Input.GetKeyDown (KeyCode.O))

@@ -9,7 +9,7 @@ public class SailBlow : MonoBehaviour {
         Sideward,
     };
 
-    public WindController wind;
+    private WindController wind;
     public float blowStrength = 0.05f;
     public Transform ship;
     public SailType sailType = SailType.Forward;    
@@ -23,7 +23,7 @@ public class SailBlow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame

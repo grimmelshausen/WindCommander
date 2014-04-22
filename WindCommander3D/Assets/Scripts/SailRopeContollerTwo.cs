@@ -8,7 +8,7 @@ using System.Collections;
 public class SailRopeContollerTwo : MonoBehaviour {
 
 
-	public WindController wind;
+	private WindController wind;
 	public float angleSailWind;
 	public float angleShipWind;
 	public float angleSailShip;
@@ -23,7 +23,7 @@ public class SailRopeContollerTwo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 
 	void OnGUI()

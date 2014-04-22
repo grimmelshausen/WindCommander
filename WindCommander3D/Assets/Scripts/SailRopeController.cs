@@ -12,7 +12,7 @@ public class SailRopeController : MonoBehaviour {
 	public float ropeMoveSpeed = 0.1f;
 
 	public float targetRopeLengthPercent;
-	public WindController wind;
+	private WindController wind;
 	public ShipController ship;
 
 
@@ -30,7 +30,7 @@ public class SailRopeController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame

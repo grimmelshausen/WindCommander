@@ -1,18 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
-public class ArrowWind : MonoBehaviour {
+public class ArrowWind : TogglableHelpGUI {
 
 	public Vector3 offset;
 	public Transform ship;
-	public WindController wind;
+	private WindController wind;
 
 
-	float normalScale = 8;
+	float normalScale = 20;
 
 	// Use this for initialization
 	void Start () {
-
+        this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,7 @@ public class ArrowWind : MonoBehaviour {
 		this.transform.Rotate(Vector3.up, 180); // Yup. Rotate 180 deg because the arrow looks backwards
 		this.transform.localScale = new Vector3(normalScale, normalScale, normalScale * wind.speed / 4);
 
-
-
 	}
+
+
 }
