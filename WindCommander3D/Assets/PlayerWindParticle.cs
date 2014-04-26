@@ -14,6 +14,8 @@ public class PlayerWindParticle : MonoBehaviour {
     void Start()
     {
         this.wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<WindController>();
+        this.particleSystem.simulationSpace = ParticleSystemSimulationSpace.World;
+        this.particleSystem.startSpeed = wind.Wind().magnitude;
     }
 	
 	// Update is called once per frame
@@ -23,8 +25,9 @@ public class PlayerWindParticle : MonoBehaviour {
         Vector3 particlesVec = wind.Wind() - playerShip.velocity;
 
 
-        this.particleSystem.startSpeed = particlesVec.magnitude;
-        this.transform.rotation = Quaternion.FromToRotation(Vector3.forward, particlesVec);
+
+        //this.particleSystem.startSpeed = particlesVec.magnitude;
+        this.transform.rotation = Quaternion.FromToRotation(Vector3.forward, wind.Wind());
 
 
         debugOutShipVel = playerShip.velocity;

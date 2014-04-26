@@ -13,6 +13,8 @@ public class ShipSailLutForce : MonoBehaviour {
 	public float strength = 1;
 	public float sailDrive;
 
+    public bool sailsFurled = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -23,7 +25,7 @@ public class ShipSailLutForce : MonoBehaviour {
 	 */ 
 	void Update ()
 	{
-        if (!sailRopeController.isInIrons)
+        if (!sailRopeController.isInIrons && !sailsFurled)
         {
     		relWindAngle = Mathf.Abs(Mathf.RoundToInt(Quaternion.FromToRotation(wind.forward, this.transform.forward).eulerAngles.y) - 180); //angle from wind forward to the boat forward
     		sailAngle = Mathf.RoundToInt(Mathhelp.AbsAngleY(-this.transform.forward, this.sailHinge.transform.forward)); //angle from the boat back to the sail direction
