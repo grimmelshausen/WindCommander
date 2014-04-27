@@ -3,8 +3,12 @@ using System.Collections;
 
 public class ShipKeelForce : MonoBehaviour {
 
-	public float straightenUpStrength = 1;
-	public float sidewaysRetardationStrength = 1;
+	[Range(0, 50)]
+	public float straightenUpStrengthZ = 2;
+	[Range(0, 50)]
+	public float straightenUpStrengthX= 2;
+	[Range(0, 100)]
+	public float sidewaysRetardationStrength = 10;
 	//public Transform shipTop;
 	//public Transform shipBottom;
 
@@ -50,10 +54,14 @@ public class ShipKeelForce : MonoBehaviour {
 		 * Just slowly rotate the object into original rotation, keeping the y rotation
 		 * 
 		 */
-        // straight up
-		Quaternion r = Quaternion.Slerp(this.transform.rotation, Quaternion.identity, Time.deltaTime*straightenUpStrength);
-		this.transform.rotation = Quaternion.Euler(new Vector3(r.eulerAngles.x, this.transform.rotation.eulerAngles.y, r.eulerAngles.z));
+        // straight up in Z dir
+		Quaternion r = Quaternion.Slerp(this.transform.rotation, Quaternion.identity, Time.deltaTime*straightenUpStrengthZ);
+		this.transform.rotation = Quaternion.Euler(new Vector3(this.transform.rotation.eulerAngles.x, this.transform.rotation.eulerAngles.y, r.eulerAngles.z));
 
+		// straight up in X dir
+		//r = Quaternion.Slerp(this.transform.rotation, Quaternion.identity, Time.deltaTime*straightenUpStrengthX);
+		//this.transform.rotation = Quaternion.Euler(new Vector3(r.eulerAngles.x, this.transform.rotation.eulerAngles.y, this.transform.rotation.eulerAngles.z));
+		this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, this.transform.rotation.eulerAngles.z); //the hack works better
 
         //Retardation
         this.rigidbody.AddForce(-Vector3.Project(this.rigidbody.velocity, this.transform.right)*sidewaysRetardationStrength);

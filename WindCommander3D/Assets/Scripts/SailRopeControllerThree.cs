@@ -47,7 +47,7 @@ public class SailRopeControllerThree : MonoBehaviour
         // The wind relative to the ship's velocity
         Vector3 relWind = wind.Wind() - ship.rigidbody.velocity;
 
-        Debug.DrawLine(ship.transform.position + new Vector3(0,  4.1f, 0), ship.transform.position + new Vector3(0, 4.1f, 0) + relWind, Color.red);
+        //Debug.DrawLine(ship.transform.position + new Vector3(0,  4.1f, 0), ship.transform.position + new Vector3(0, 4.1f, 0) + relWind, Color.red);
         
         
         /*

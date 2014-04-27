@@ -26,7 +26,7 @@ public class PlayerWindParticle : MonoBehaviour {
 
 
 
-        //this.particleSystem.startSpeed = particlesVec.magnitude;
+		this.particleSystem.startSpeed = wind.Wind().magnitude;
         this.transform.rotation = Quaternion.FromToRotation(Vector3.forward, wind.Wind());
 
 
