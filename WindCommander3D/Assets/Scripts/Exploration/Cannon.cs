@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Exploration/Cannon")]
+
 public class Cannon : MonoBehaviour
 {
 	// Cannonball prefab
@@ -25,7 +25,7 @@ public class Cannon : MonoBehaviour
 	public float rechargeTime = 2f;
 
 	Transform mTrans;
-	GameShip mStats;
+	public Transform playerShip;
 	float mFireTime = 0f;
 	float mRechargeTime = 0f;
 	Collider[] mColliders;
@@ -39,21 +39,21 @@ public class Cannon : MonoBehaviour
 
 	public float maxRange { get { return mMaxRange; } }
 
-	/// <summary>
-	/// Helper function that calculates the cannon's maximum firing range.
-	/// </summary>
-
-	float CalculateMaxRange ()
-	{
-		// Vertical velocity can be calculated using the pitch and initial full velocity:
-		float velocity = Mathf.Sin(Mathf.Deg2Rad * maxPitch) * initialVelocity;
-
-		// This is how long it will take the fired cannon ball to reach the sea level
-		float time = -velocity / (0.5f * Physics.gravity.y);
-
-		// Now let's calculate the distance traveled horizontally in the same amount of time
-		return Mathf.Cos(Mathf.Deg2Rad * maxPitch) * initialVelocity * time;
-	}
+//	/// <summary>
+//	/// Helper function that calculates the cannon's maximum firing range.
+//	/// </summary>
+//
+//	float CalculateMaxRange ()
+//	{
+//		// Vertical velocity can be calculated using the pitch and initial full velocity:
+//		float velocity = Mathf.Sin(Mathf.Deg2Rad * maxPitch) * initialVelocity;
+//
+//		// This is how long it will take the fired cannon ball to reach the sea level
+//		float time = -velocity / (0.5f * Physics.gravity.y);
+//
+//		// Now let's calculate the distance traveled horizontally in the same amount of time
+//		return Mathf.Cos(Mathf.Deg2Rad * maxPitch) * initialVelocity * time;
+//	}
 
 	/// <summary>
 	/// Cache the transform and the ship controlling this cannon.
@@ -62,15 +62,15 @@ public class Cannon : MonoBehaviour
 	void Start ()
 	{
 		mTrans = transform;
-		mStats = GameShip.Find(mTrans);
+
 
 		// Calculate the cannon's maximum range
-		mMaxRange = CalculateMaxRange();
+//		mMaxRange = CalculateMaxRange();
 
-		if (mStats != null)
+		if (playerShip != null)
 		{
 			// Ship stats found -- use it as root node
-			mColliders = mStats.GetComponentsInChildren<Collider>();
+			mColliders = playerShip.GetComponentsInChildren<Collider>();
 		}
 		else
 		{
@@ -117,7 +117,7 @@ public class Cannon : MonoBehaviour
 
 				// It's usually a good idea to know who fired the cannon ball
 				Cannonball cb = go.GetComponent<Cannonball>();
-				if (cb != null) cb.owner = mStats.gameObject;
+				if (cb != null) cb.owner = playerShip.gameObject;
 
 				// Rigidbody is generally expected to be present
 				Rigidbody rb = go.GetComponent<Rigidbody>();

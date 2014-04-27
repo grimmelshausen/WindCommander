@@ -4,7 +4,7 @@
 [AddComponentMenu("Exploration/Ship Trail")]
 public class ShipTrail : MonoBehaviour
 {
-	public ShipController control;
+	public Transform playerShip;
 
 	ImprovedTrail mTrail;
 
@@ -15,9 +15,8 @@ public class ShipTrail : MonoBehaviour
 
 	void Update ()
 	{
-		if (control != null)
-		{
-			mTrail.alpha = control.rigidbody.velocity.magnitude;
-		}
+
+		mTrail.alpha = playerShip.rigidbody.velocity.magnitude;
+
 	}
 }

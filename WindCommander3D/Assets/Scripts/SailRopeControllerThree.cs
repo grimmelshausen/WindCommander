@@ -9,7 +9,7 @@ public class SailRopeControllerThree : MonoBehaviour
     public float angleShipWind;
     public float angleSailShip;
     public bool isInIrons;
-    public ShipController ship;
+    public Transform ship;
     private float inIronsTolerance = 10;
     public float inputRotSailDeg;
     public float windRotSailDeg;
