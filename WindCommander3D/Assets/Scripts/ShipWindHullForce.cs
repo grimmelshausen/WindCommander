@@ -11,7 +11,8 @@ public class ShipWindHullForce : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void FixedUpdate()
+    {
         // The wind relative to the ship's velocity
         Vector3 relWind = wind.Wind() - this.rigidbody.velocity;
 

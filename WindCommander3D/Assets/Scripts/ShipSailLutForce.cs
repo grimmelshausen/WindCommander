@@ -24,8 +24,8 @@ public class ShipSailLutForce : MonoBehaviour {
 
 	/**
 	 * Currently the wind strengh is ignored. We just need the rel wind angle and the sail angle
-	 */ 
-	void Update ()
+	 */
+    void FixedUpdate()
 	{
         if (!sailRopeController.isInIrons && !sailsFurled)
         {
