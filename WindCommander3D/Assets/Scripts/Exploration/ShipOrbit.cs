@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Exploration/Ship Orbit")]
+
 public class ShipOrbit : MonoBehaviour
 {
-	public ShipController control;
+
 	public float sensitivity = 1f;
 	public Vector2 horizontalTiltRange = new Vector2(-20f, 20f);
 
@@ -18,12 +18,13 @@ public class ShipOrbit : MonoBehaviour
 
 	void Update ()
 	{
+
+		float speed = 1;
+
+
         if (Application.platform == RuntimePlatform.Android) //thisable this for android
             return;
 
-
-		if (control != null)
-		{
 			float multiplier = Time.deltaTime * sensitivity;
 			bool mouseInput = Input.GetMouseButton(0);
 
@@ -60,7 +61,7 @@ public class ShipOrbit : MonoBehaviour
 			else if (Mathf.Abs(mOffset.x) < 35f)
 			{
 				// No key pressed and the camera has not been moved much -- slowly interpolate the offset back to 0
-				float factor = Time.deltaTime * control.speed * 4f;
+				float factor = Time.deltaTime * speed * 4f;
 				mOffset.x = Mathf.Lerp(mOffset.x, 0f, factor);
 				mOffset.y = Mathf.Lerp(mOffset.y, 0f, factor);
 			}
@@ -71,6 +72,6 @@ public class ShipOrbit : MonoBehaviour
 			// Interpolate the rotation for smoother results
 			mTrans.localRotation = Quaternion.Slerp(mTrans.localRotation,
 				targetRot, Mathf.Clamp01(Time.deltaTime * 10f));
-		}
+
 	}
 }

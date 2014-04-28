@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Exploration/Ship Hull")]
+
 public class ShipHull : MonoBehaviour
 {
-	GameShip mStats;
+	public GameShip gameShip;
 
 	/// <summary>
 	/// Cache the stats.
 	/// </summary>
 
-	void Start () { mStats = GameShip.Find(transform); }
+	void Start () {  }
 
 	/// <summary>
 	/// React to the ship being hit by cannon fire.
@@ -22,7 +22,7 @@ public class ShipHull : MonoBehaviour
 		if (cb != null && cb.damage > 0f)
 		{
 			// Damage the hull
-			float damage = mStats.ApplyDamage(cb.damage, cb.owner);
+			float damage = gameShip.ApplyDamage(cb.damage, cb.owner);
 
 			// Print the damage text over the hull
 			if (damage > 0f) ScrollingCombatText.Print(gameObject, "-" + Mathf.RoundToInt(damage), Color.red);

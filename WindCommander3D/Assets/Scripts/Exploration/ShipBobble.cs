@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Exploration/Ship Bobble")]
+
 public class ShipBobble : MonoBehaviour
 {
-	public ShipController control;
 
 	Transform mTrans;
 	Vector3 mOffset;
@@ -18,7 +17,7 @@ public class ShipBobble : MonoBehaviour
 
 	void Update ()
 	{
-		float strength = 1f + ((control != null) ? control.speed : 0f);
+		float strength = 1f;
 		float delta = Time.deltaTime * strength;
 
 		mTime.x += delta * 0.7326f;

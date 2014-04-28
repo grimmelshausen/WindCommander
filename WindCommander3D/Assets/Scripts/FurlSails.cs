@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 
 /*
@@ -9,7 +9,8 @@ using System.Collections;
 public class FurlSails : MonoBehaviour {
 
 	public bool sailsFurled;
-	public Transform sails;
+    public List<Transform> sails;
+    public ShipSailLutForce shipForce;
 
 
 	// Use this for initialization
@@ -25,11 +26,16 @@ public class FurlSails : MonoBehaviour {
 
 	void ToggleFurlSails()
 	{
+
 		sailsFurled = !sailsFurled;
 		if (sailsFurled)
-			sails.renderer.material.SetFloat("_Cutoff", 1);
+            foreach(Transform t in sails)
+			    t.renderer.material.SetFloat("_Cutoff", 1);
 		else
-			sails.renderer.material.SetFloat("_Cutoff", 0);
+            foreach(Transform t in sails)
+			    t.renderer.material.SetFloat("_Cutoff", 0);
+
+        shipForce.sailsFurled = sailsFurled;
 	}
 
 	

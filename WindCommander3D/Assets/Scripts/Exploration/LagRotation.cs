@@ -3,24 +3,22 @@ using UnityEngine;
 [AddComponentMenu("Exploration/Lag Rotation")]
 public class LagRotation : MonoBehaviour
 {
-	public float speed = 10f;
+	public float speed = 1f;
 	
-	Transform mTrans;
-	Transform mParent;
-	Quaternion mRelative;
-	Quaternion mParentRot;
+    public Transform playerShip;
+
+	Quaternion localRotation;
+	Quaternion parentRotation;
 	
 	void Start()
 	{
-		mTrans = transform;
-		mParent = mTrans.parent;
-		mRelative = mTrans.localRotation;
-		mParentRot = mParent.rotation;
+        localRotation = transform.localRotation;
+        parentRotation = playerShip.rotation;
 	}
 	
 	void LateUpdate()
 	{
-		mParentRot = Quaternion.Slerp(mParentRot, mParent.rotation, Time.deltaTime * speed);
-		mTrans.rotation = mParentRot * mRelative;
-	}
+        parentRotation = Quaternion.Slerp(parentRotation, playerShip.rotation, Time.deltaTime * speed);
+        transform.rotation = parentRotation * localRotation;
+    }
 }
